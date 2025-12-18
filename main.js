@@ -1,7 +1,7 @@
 'use strict';
 
 const canvas = document.getElementById('canvas');
-const canvasCenter = {x: canvas.width/2, y: canvas.height/2};
+const canvasCenter = { x: canvas.width / 2, y: canvas.height / 2 };
 const ctx = canvas.getContext('2d');
 
 const circle = {
@@ -10,14 +10,16 @@ const circle = {
 };
 
 const points = [
-    { theta: 0 },
-    { theta: Math.PI / 4 },
+    { theta : 0 }, // A
+    { theta : Math.PI / 6 }, // B
+    { theta : 8 * Math.PI / 11 }, // C
+    { theta : 5 * Math.PI / 4 } // D
 ];
 
 let activePointIndex = null;
 
 // Added: function to find nearest point
-function findNearestPointIndex(mousePos, tolerance = 10) {
+function findNearestPointIndex(mousePos, ds = 10) {
     let minDistance = Infinity;
     let nearestIndex = -1;
     
@@ -30,7 +32,7 @@ function findNearestPointIndex(mousePos, tolerance = 10) {
         }
     }
     
-    return minDistance < tolerance ? nearestIndex : null;
+    return minDistance < ds ? nearestIndex : null;
 }
 
 canvas.addEventListener('mousedown', (e) => {
@@ -72,6 +74,25 @@ function positionOf(theta) {
     };
 }
 
+// Lines are defined by the indices of the points that defined them.
+// So, AB is stored as the ordered pair (0,1),
+const lines = {
+    AB : { i : 0, j : 1 },
+    BC : { i : 1, j : 2 },
+    CD : { i : 2, j : 3 },
+    DA : { i : 3, j : 0 },
+    // Below are diagonals
+    AC : { i : 0, j : 2 },
+    BD : { i : 1, j : 3 }
+};
+
+function lineEndPoints(line, points) {
+    return {
+        p : positionOf(points[line.i].theta),
+        q : positionOf(points[line.j].theta)
+    }
+}
+
 function clear() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 }
@@ -105,6 +126,16 @@ function distance(point1, point2) {
     return Math.sqrt((point1.x - point2.x) ** 2 + (point1.y - point2.y) ** 2);
 }
 
+function lineLength(line) {
+    const { p , q } = lineEndPoints(line, points);
+    return distance(p, q);
+}
+
+function drawLineByIndex(line) {
+    const { p , q } = lineEndPoints(line, points);
+    drawLine(p, q);
+}
+
 function draw() {
     clear();
 
@@ -115,7 +146,13 @@ function draw() {
 
     // Draw line between the two points
     if (positions.length >= 2) {
-        drawLine(positions[0], positions[1]);
+        drawLineByIndex(lines.AB);
+        drawLineByIndex(lines.BC);
+        drawLineByIndex(lines.CD);
+        drawLineByIndex(lines.DA);
+
+        drawLineByIndex(lines.AC);
+        drawLineByIndex(lines.BD);
     }
 
     // Draw all points
