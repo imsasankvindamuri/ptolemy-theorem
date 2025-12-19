@@ -7,7 +7,9 @@ An interactive canvas-based visualization of Ptolemy’s Theorem for cyclic quad
 Four points lie on a fixed circle and can be dragged along it. As the quadrilateral changes,
 the identity
 
-$\mathrm{AB \cdot CD + BC \cdot DA = AC \cdot BD}$
+$$
+\mathrm{AB \cdot CD + BC \cdot DA = AC \cdot BD}
+$$
 
 is verified numerically in real time.
 
@@ -21,7 +23,15 @@ This project prioritizes clarity, geometry-first design, and restraint over anim
 
 ## What is Ptolemy's Theorem?
 
-Arount 150-200 CE, Claudius Ptolomeus (known to us as Ptolemy) wrote the Almagest,
+Ptolemy's Theorem states that in a non-self-intersecting quadrilateral, the sum of the products
+of opposite sides is equal to the product of the diagonals. For the cyclic non-self-intersecting
+quadrilateral $\mathrm{ABCD}$, we have
+
+$$
+\mathrm{AB \cdot CD + BC \cdot DA = AC \cdot BD}
+$$
+
+Around 150-200 CE, Claudius Ptolomeus (known to us as Ptolemy) wrote the Almagest,
 a text on the Geocentric model of the solar system. Within it, he used the above theorem
 to create a table of chords, which he would use for his astronomical work.
 
