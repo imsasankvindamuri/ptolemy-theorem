@@ -26,3 +26,11 @@ a text on the Geocentric model of the solar system. Within it, he used the above
 to create a table of chords, which he would use for his astronomical work.
 
 This project is made to show Ptolemy's Theorem in action.
+
+## Try it for yourself
+
+- Clone this repository: `git clone https://github.com/imsasankvindamuri/ptolemy-theorem.git`
+- Open the cloned repository in your file manager of choice
+- Open `index.html` in your browser
+
+I hope you like it!
