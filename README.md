@@ -22,7 +22,7 @@ This project prioritizes clarity, geometry-first design, and restraint over anim
 ## What is Ptolemy's Theorem?
 
 Arount 150-200 CE, Claudius Ptolomeus (known to us as Ptolemy) wrote the Almagest,
-a text on the Geocentric model of the solar system. Within it, he used the above table
+a text on the Geocentric model of the solar system. Within it, he used the above theorem
 to create a table of chords, which he would use for his astronomical work.
 
 This project is made to show Ptolemy's Theorem in action.
