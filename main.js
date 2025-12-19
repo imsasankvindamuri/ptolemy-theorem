@@ -21,10 +21,10 @@ const circle = {
 
 // Initialize points (angles in radians)
 const points = [
-  { theta: 0 },                 // A
-  { theta: Math.PI / 6 },       // B
-  { theta: 8 * Math.PI / 11 },  // C
-  { theta: 5 * Math.PI / 4 }    // D
+  { name: 'A', theta: 0 },
+  { name: 'B', theta: Math.PI / 6 },
+  { name: 'C', theta: 8 * Math.PI / 11 },
+  { name: 'D', theta: 5 * Math.PI / 4 }
 ];
 
 // State for dragging
@@ -71,7 +71,7 @@ function draw() {
 
   // Calculate and display theorem
   const calculations = calculatePtolemy(points, circle);
-  displayTheorem(ctx, calculations);
+  updateTheoremDisplay(calculations);
 }
 
 // Initialize everything

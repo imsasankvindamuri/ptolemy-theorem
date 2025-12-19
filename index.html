@@ -4,6 +4,21 @@
   <meta charset="UTF-8">
   <title>Ptolemy's Theorem — A Visual Meditation</title>
   <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"
+    async>
+</script>
+
 </head>
 <body>
   <h1>Ptolemy's Theorem — A Visual Meditation</h1>
@@ -12,6 +27,20 @@
   </p>
   
   <canvas id="canvas" width="800" height="600"></canvas>
+
+  <p class="quote">
+    Drag the above points to see Ptolemy's Theorem in action.
+  </p>
+
+  <p>
+    Ptolemy's Theorem states that for a cyclic non-self-intersecting quadrilateral $ABCD$, $AB \cdot CD + BC \cdot DA = AC \cdot BD$.
+  </p>
+
+  <div id="theorem">
+    <div id="ptolemy-equality"></div>
+    <div id="ptolemy-difference"></div>
+    <div id="ptolemy-validity"></div>
+  </div>
   
   <script src="geometry.js"></script>
   <script src="drawing.js"></script>

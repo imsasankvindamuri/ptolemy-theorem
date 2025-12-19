@@ -27,6 +27,33 @@ function getLineEndpoints(lineIndex, points, circle) {
   };
 }
 
+function normalizeTheta(theta) {
+  return (theta % (2 * Math.PI) + 2 * Math.PI) % (2 * Math.PI);
+}
+
+function isCyclic() {
+  // Make a copy to sort without changing the original points
+  const sortedPoints = [...points].sort((p, q) => normalizeTheta(p.theta) - normalizeTheta(q.theta));
+
+  // Get the sorted names, like ['A', 'C', 'B', 'D']
+  const sortedNames = sortedPoints.map(p => p.name).join('');  // Join to a string for easy checking, e.g., 'ACBD'
+
+  // Define the proper order as a string
+  const proper = 'ABCD';
+  const reverseProper = 'ADCB';  // Reverse for clockwise
+
+  // Double them to handle rotations: 'ABCDABCD' contains all rotations like 'BCDA'
+  const doubledProper = proper + proper;
+  const doubledReverse = reverseProper + reverseProper;
+
+  // Check if sortedNames is a substring of the doubled versions
+  if (doubledProper.includes(sortedNames) || doubledReverse.includes(sortedNames)) {
+    return true;  // It's in proper cyclic order, no self-intersection
+  } else {
+    return false;  // Intersecting or wrong order
+  }
+}
+
 // Calculate length of a line
 function lineLength(lineIndex, points, circle) {
   const { p, q } = getLineEndpoints(lineIndex, points, circle);
