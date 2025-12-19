@@ -2,6 +2,8 @@
 
 An interactive canvas-based visualization of Ptolemy’s Theorem for cyclic quadrilaterals.
 
+![Ptolemy's Theorem](./ptolemy-demo.png)
+
 Four points lie on a fixed circle and can be dragged along it. As the quadrilateral changes,
 the identity
 
